@@ -1,0 +1,79 @@
+@base <http://www.w3.org/ns/solid/acl> .
+@prefix : <#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix cc: <https://creativecommons.org/ns#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+<> a owl:Ontology ;
+    cc:attributionURL <> ;
+    cc:license <https://creativecommons.org/publicdomain/zero/1.0/> ;
+    dcterms:issued "2020-08-12"^^xsd:date ;
+    rdfs:label "Solid Access Control"@en .
+
+:ACLSource a rdfs:Class ;
+    rdfs:label "ACL Resource"@en ;
+    rdfs:isDefinedBy <> .
+
+:AccessControlList a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Access Control List"@en .
+
+:Authorization a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "Authorization"@en .
+
+:apply a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:label "apply"@en ;
+    rdfs:domain :AccessControlList ;
+    rdfs:range :Authorization .
+
+:applyMembers a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :AccessControlList ;
+    rdfs:range :Authorization .
+
+:allow a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :Authorization .
+
+:allowGroup a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :Authorization ;
+    rdfs:range vcard:Group .
+
+:deny a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :Authorization .
+
+:denyGroup a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :Authorization ;
+    rdfs:range vcard:Group .
+
+:mode a rdf:Property ;
+    rdfs:isDefinedBy <> ;
+    rdfs:domain :Authorization ;
+    rdfs:range :Access .
+
+:Access a rdfs:Class ;
+    rdfs:isDefinedBy <> .
+
+:Read a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:subClassOf :Access .
+
+:Write a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:subClassOf :Access .
+
+:Append a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:subClassOf :Access .
+
+:Control a rdfs:Class ;
+    rdfs:isDefinedBy <> ;
+    rdfs:subClassOf :Access .
